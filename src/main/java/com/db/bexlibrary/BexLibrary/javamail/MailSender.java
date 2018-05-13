@@ -32,6 +32,8 @@ public class MailSender {
         javaMailSender.send(mail);
 
         logger.info("Done!");
+
+
     }
 
 }

@@ -41,7 +41,6 @@ public class BooksController {
     }
 
 
-
     @GetMapping(value = "/booksbyauthor")
     public List<Book> findBookByAuthor(@RequestParam(name="name")String name) {
         return bookService.findBooksByAuthorName(name);

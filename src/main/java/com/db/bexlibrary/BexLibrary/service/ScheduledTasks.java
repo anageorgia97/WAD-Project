@@ -19,7 +19,7 @@ public class ScheduledTasks {
     @Autowired
     LoanRepo loanRepo;
 
-    @Scheduled(fixedRate = 120000)
+    @Scheduled(fixedRate = 960000)
     public void sendReminderMethod() {
         List<Loan> loans = loanRepo.findLoansByIsReturnedIsFalse();
         for (Loan loan : loans

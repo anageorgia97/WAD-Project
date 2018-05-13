@@ -2,6 +2,7 @@ package com.db.bexlibrary.BexLibrary.controllers;
 
 import com.db.bexlibrary.BexLibrary.entities.Book;
 import com.db.bexlibrary.BexLibrary.repositories.BookRepository;
+import com.db.bexlibrary.BexLibrary.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Controller;
@@ -16,13 +17,14 @@ public class SearchController {
 
     @Autowired
     private BookRepository bookRepo;
-
+    @Autowired
+    private BookService bookService;
     @GetMapping(value="/search")
     private List<Book> searchMethod(@RequestParam(name="title") String title){
         List<Book> results=new ArrayList<>();
         System.out.println(title);
 
-       // results.addAll( bookRepo.findBooksByAuthorLike(title));
+        results.addAll(bookService.findBooksByAuthorName(title));
         results.addAll(bookRepo.findBooksByTitleContaining(title));
         System.out.println(results);
         return results;
